@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Novo Usuário</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <form action="/users/register" method="post">
+        <label>Username:</label>
+        <input type="text" name="username" required><br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" required><br><br>
+
+        <label>Senha:</label>
+        <input type="password" name="password" required><br><br>
+
+        <label>Nome:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label>Bio:</label>
+        <input type="text" name="bio"><br><br>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+
+</html>
