@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
@@ -11,9 +11,8 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
   const { username, email, password, name, bio } = req.body;
 
-  // TO DO: express-validator
   if (!username || !email || !password || !name) {
-    return res.status(400).json({ msg: 'Por favor, preencha todos os campos.' });
+    res.render('error', { error: '400', title: 'Error', description: 'Por favor, preencha todos os campos' });
   }
 
   try {
@@ -21,11 +20,11 @@ router.post('/register', async (req, res) => {
     let userName = await User.findOne({ username: username });
 
     if (user) {
-      return res.status(400).json({ msg: 'Este e-mail já está em uso.' });
+      res.render('error', { error: '400', title: 'Error', description: 'Este e-mail já está em uso' });
     }
 
     if (userName) {
-      return res.status(400).json({ msg: 'Este username já está em uso.' });
+      res.render('error', { error: '400', title: 'Error', description: 'Este username já está em uso' });
     }
 
     user = new User({
@@ -43,8 +42,7 @@ router.post('/register', async (req, res) => {
 
     res.redirect('/users/login');
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Erro no Servidor');
+    res.render('error', { error: '400', title: 'Erro no Servidor', description: err.message });
   }
 });
 
@@ -56,37 +54,37 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    return res.status(400).json({ msg: 'Por favor, forneça e-mail e senha.' });
+    res.render('error', { error: '400', title: 'Error', description: 'Por favor, forneça e-mail e senha' });
   }
 
   try {
     const user = await User.findOne({ username });
 
     if (!user) {
-      return res.status(400).json({ msg: 'Credenciais inválidas.' });
+      res.render('error', { error: '400', title: 'Error', description: 'Credenciais inválidas' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(400).json({ msg: 'Credenciais inválidas.' });
+      res.render('error', { error: '400', title: 'Error', description: 'Credenciais inválidas' });
     }
 
     req.session.logado = true;
     req.session.userId = user.id;
     req.session.userName = user.name;
+    req.session.username = user.username;
 
-    res.redirect('/');
+    res.redirect('/home');
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Erro no Servidor');
+    res.render('error', { error: '400', title: 'Erro no Servidor', description: err.message });
   }
 });
 
 router.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      return res.status(500).send('Erro ao fazer logout.');
+      res.render('error', { error: '400', title: 'Erro no Servidor', description: err.message });
     }
 
     res.clearCookie('connect.sid');

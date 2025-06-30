@@ -1,21 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
-    <title>Entrar</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TxtFlow - Login</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/logo.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel='stylesheet' href='/stylesheets/reset.css' />
+  <link rel='stylesheet' href='/stylesheets/global.css' />
 </head>
 
 <body>
-    <form action="/users/login" method="post">
-        <label>Username:</label>
-        <input type="text" name="username" required><br><br>
+  <header class="header">
+    <a class="header__container-logo" href="/">
+      <img src="../images/logo.svg" alt="Logo">
+      <span>TxtFlow</span>
+    </a>
 
-        <label>Senha:</label>
-        <input type="password" name="password" required><br><br>
+    <div class="header__container-buttons">
+      <a class="button-secondary" href="/users/login">Entrar</a>
+      <a class="button-primary" href="/users/register">Cadastrar</a>
+    </div>
+  </header>
 
-        <input type="submit" value="Entrar">
-    </form>
+  <main class="user__main">
+    <section class="user__form">
+      <header class="user__form-header">
+        <img src="../images/logo.svg" alt="Logo">
+        <h1>Bem-vindo de volta</h1>
+        <p>Entre na sua conta TxtFlow</p>
+      </header>
+
+      <form action="/users/login" method="post">
+        <div class="user__form-row">
+          <label for="username">Nome de usuário</label>
+          <input type="text" name="username" id="username" placeholder="Seu usuario" required>
+        </div>
+
+        <div class="user__form-row">
+          <label for="password">Senha</label>
+          <input type="password" name="password" id="password" placeholder="••••••••" minlength="8" required>
+        </div>
+
+        <input class="button-primary" type="submit" value="Entrar">
+      </form>
+
+      <span class="user__form-span">Não tem uma conta? <a href="/users/register">Cadastre-se</a></span>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 TxtFlow - Projeto Back-End</p>
+    <span>Análise e Desenvolvimento de Sistemas</span>
+  </footer>
 </body>
 
 </html>

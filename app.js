@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const http = require('http');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -10,6 +11,8 @@ const session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const homeRouter = require('./routes/home');
+const notFoundRouter = require('./routes/notFound');
 
 const app = express();
 
@@ -42,26 +45,16 @@ app.use(
     saveUninitialized: false,
     cookie: {
       secure: false,
-      maxAge: 3600000 // 1 hora
+      maxAge: 36000000
     }
   })
 );
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/home', homeRouter);
+app.use('/not-found', notFoundRouter);
 
-app.use(function (req, res, next) {
-  next(createError(404));
-});
-
-app.use(function (err, req, res, next) {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-app.listen(4000);
+http.createServer(app).listen(4000);
 
 module.exports = app;

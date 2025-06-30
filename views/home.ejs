@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TxtFlow - Home</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/logo.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel='stylesheet' href='/stylesheets/reset.css' />
+  <link rel='stylesheet' href='/stylesheets/global.css' />
+</head>
+
+<body>
+  <header class="header">
+    <a class="header__container-logo" href="/">
+      <img src="../images/logo.svg" alt="Logo">
+      <span>TxtFlow</span>
+    </a>
+
+    <div class="header__container-user">
+      <span>@<%= username %></span>
+      <div>
+        <%= initial %>
+      </div>
+    </div>
+  </header>
+
+  <div class="home__container">
+    <aside class="home__container-user">
+      <header>
+        <div class="profile-picture">
+          <%= initial %>
+        </div>
+
+        <div class="user-info">
+          <p>
+            <%= name %>
+          </p>
+          <span>
+            @<%= username %>
+          </span>
+        </div>
+      </header>
+
+      <div class="divisor"></div>
+
+      <div class="user-data">
+        <div class="row">
+          <p>Posts</p>
+          <span>24</span>
+        </div>
+
+        <div class="row">
+          <p>Curtidas recebidas</p>
+          <span>142</span>
+        </div>
+      </div>
+
+      <div class="divisor"></div>
+
+      <div class="menu">
+        <h4>Menu</h4>
+
+        <nav>
+          <a href="/home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+              </path>
+            </svg>
+            <p>Feed</p>
+          </a>
+
+          <a href="/users/logout">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+            </svg>
+            <p>Sair</p>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="home__main">
+      <div class="create-post">
+        <div class="profile-picture">
+          <%= initial %>
+        </div>
+
+        <form action="/not-found">
+          <textarea name="post" id="post" placeholder="O que está acontecendo?" rows="2"></textarea>
+
+          <div class="create-post__footer">
+            <div class="left">
+              <button>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                  </path>
+                </svg>
+              </button>
+
+              <button>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </button>
+            </div>
+
+            <input type="submit" value="Publicar" class="button-primary">
+          </div>
+        </form>
+
+      </div>
+
+      <article class="post">
+        <div class="profile-picture">T</div>
+
+        <div class="post-content">
+          <header class="user-info">
+            <p>Talita Leoni</p>
+            <span>@talileoni</span>
+          </header>
+
+          <p class="content">
+            Acabei de começar a usar o TxtFlow para o meu projeto da faculdade. A interface é super intuitiva! Alguém
+            mais está usando para a disciplina de Desenvolvimento Backend?
+          </p>
+
+          <div class="container-buttons">
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z">
+                </path>
+              </svg>
+              <p>12</p>
+            </button>
+
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <p>3</p>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="profile-picture">T</div>
+
+        <div class="post-content">
+          <header class="user-info">
+            <p>Talita Leoni</p>
+            <span>@talileoni</span>
+          </header>
+
+          <p class="content">
+            Acabei de começar a usar o TxtFlow para o meu projeto da faculdade. A interface é super intuitiva! Alguém
+            mais está usando para a disciplina de Desenvolvimento Backend?
+          </p>
+
+          <div class="container-buttons">
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z">
+                </path>
+              </svg>
+              <p>12</p>
+            </button>
+
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <p>3</p>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="profile-picture">T</div>
+
+        <div class="post-content">
+          <header class="user-info">
+            <p>Talita Leoni</p>
+            <span>@talileoni</span>
+          </header>
+
+          <p class="content">
+            Acabei de começar a usar o TxtFlow para o meu projeto da faculdade. A interface é super intuitiva! Alguém
+            mais está usando para a disciplina de Desenvolvimento Backend?
+          </p>
+
+          <div class="container-buttons">
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z">
+                </path>
+              </svg>
+              <p>12</p>
+            </button>
+
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <p>3</p>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="profile-picture">T</div>
+
+        <div class="post-content">
+          <header class="user-info">
+            <p>Talita Leoni</p>
+            <span>@talileoni</span>
+          </header>
+
+          <p class="content">
+            Acabei de começar a usar o TxtFlow para o meu projeto da faculdade. A interface é super intuitiva! Alguém
+            mais está usando para a disciplina de Desenvolvimento Backend?
+          </p>
+
+          <div class="container-buttons">
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z">
+                </path>
+              </svg>
+              <p>12</p>
+            </button>
+
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <p>3</p>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="profile-picture">T</div>
+
+        <div class="post-content">
+          <header class="user-info">
+            <p>Talita Leoni</p>
+            <span>@talileoni</span>
+          </header>
+
+          <p class="content">
+            Acabei de começar a usar o TxtFlow para o meu projeto da faculdade. A interface é super intuitiva! Alguém
+            mais está usando para a disciplina de Desenvolvimento Backend?
+          </p>
+
+          <div class="container-buttons">
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z">
+                </path>
+              </svg>
+              <p>12</p>
+            </button>
+
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <p>3</p>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="profile-picture">T</div>
+
+        <div class="post-content">
+          <header class="user-info">
+            <p>Talita Leoni</p>
+            <span>@talileoni</span>
+          </header>
+
+          <p class="content">
+            Acabei de começar a usar o TxtFlow para o meu projeto da faculdade. A interface é super intuitiva! Alguém
+            mais está usando para a disciplina de Desenvolvimento Backend?
+          </p>
+
+          <div class="container-buttons">
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z">
+                </path>
+              </svg>
+              <p>12</p>
+            </button>
+
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <p>3</p>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="profile-picture">T</div>
+
+        <div class="post-content">
+          <header class="user-info">
+            <p>Talita Leoni</p>
+            <span>@talileoni</span>
+          </header>
+
+          <p class="content">
+            Acabei de começar a usar o TxtFlow para o meu projeto da faculdade. A interface é super intuitiva! Alguém
+            mais está usando para a disciplina de Desenvolvimento Backend?
+          </p>
+
+          <div class="container-buttons">
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z">
+                </path>
+              </svg>
+              <p>12</p>
+            </button>
+
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <p>3</p>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="profile-picture">T</div>
+
+        <div class="post-content">
+          <header class="user-info">
+            <p>Talita Leoni</p>
+            <span>@talileoni</span>
+          </header>
+
+          <p class="content">
+            Acabei de começar a usar o TxtFlow para o meu projeto da faculdade. A interface é super intuitiva! Alguém
+            mais está usando para a disciplina de Desenvolvimento Backend?
+          </p>
+
+          <div class="container-buttons">
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z">
+                </path>
+              </svg>
+              <p>12</p>
+            </button>
+
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <p>3</p>
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+  </div>
+
+  <footer>
+    <p>© 2025 TxtFlow - Projeto Back-End</p>
+    <span>Análise e Desenvolvimento de Sistemas</span>
+  </footer>
+</body>
+
+</html>

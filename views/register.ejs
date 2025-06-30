@@ -1,30 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
-    <title>Novo Usuário</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TxtFlow - Cadastro</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/logo.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel='stylesheet' href='/stylesheets/reset.css' />
+  <link rel='stylesheet' href='/stylesheets/global.css' />
 </head>
 
 <body>
-    <form action="/users/register" method="post">
-        <label>Username:</label>
-        <input type="text" name="username" required><br><br>
+  <header class="header">
+    <a class="header__container-logo" href="/">
+      <img src="../images/logo.svg" alt="Logo">
+      <span>TxtFlow</span>
+    </a>
 
-        <label>Email:</label>
-        <input type="email" name="email" required><br><br>
+    <div class="header__container-buttons">
+      <a class="button-secondary" href="/users/login">Entrar</a>
+      <a class="button-primary" href="/users/register">Cadastrar</a>
+    </div>
+  </header>
 
-        <label>Senha:</label>
-        <input type="password" name="password" required><br><br>
+  <main class="user__main">
+    <section class="user__form">
+      <header class="user__form-header">
+        <img src="../images/logo.svg" alt="Logo">
+        <h1>Criar uma conta</h1>
+        <p>Junte-se à comunidade TxtFlow</p>
+      </header>
 
-        <label>Nome:</label>
-        <input type="text" name="name" required><br><br>
+      <form action="/users/register" method="post">
+        <div class="user__form-row">
+          <label for="name">Nome completo</label>
+          <input type="text" name="name" id="name" placeholder="Seu nome" required>
+        </div>
 
-        <label>Bio:</label>
-        <input type="text" name="bio"><br><br>
+        <div class="user__form-row">
+          <label for="username">Nome de usuário</label>
 
-        <input type="submit" value="Cadastrar">
-    </form>
+          <div class="user__form-username">
+            <span>@</span>
+            <input type="text" name="username" id="username" placeholder="seuusuario" required>
+          </div>
+        </div>
+
+        <div class="user__form-row">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="user__form-row">
+          <label for="password">Senha</label>
+          <input type="password" name="password" id="password" placeholder="••••••••" minlength="8" required>
+        </div>
+
+        <div class="user__form-row">
+          <label for="bio">Sua bio</label>
+          <input type="text" name="bio" id="bio" placeholder="Uma breve descrição">
+        </div>
+
+        <input class="button-primary" type="submit" value="Criar conta">
+      </form>
+
+      <span class="user__form-span">Já tem uma conta? <a href="/users/login">Entrar</a></span>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 TxtFlow - Projeto Back-End</p>
+    <span>Análise e Desenvolvimento de Sistemas</span>
+  </footer>
 </body>
 
 </html>
