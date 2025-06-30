@@ -4,7 +4,9 @@ const User = require('../models/user');
 
 function checkLogin(req, res, next) {
   if (req.session.logado) {
-    next();
+    res.status(200).json({ msg: 'Logado!' });
+
+    // next();
   } else {
     res.redirect('/users/login');
   }
