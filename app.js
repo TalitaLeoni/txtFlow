@@ -16,6 +16,8 @@ const notFoundRouter = require('./routes/notFound');
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 const mongoURL = process.env.MONGODB_URL;
 
 mongoose.connect(mongoURL)
