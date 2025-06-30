@@ -65,6 +65,6 @@ app.use('/users', usersRouter);
 app.use('/home', homeRouter);
 app.use('/not-found', notFoundRouter);
 
-process.env.NODE_ENV === 'development' && http.createServer(app).listen(4000);
+http.createServer(app).listen(4000);
 
 module.exports = app;
