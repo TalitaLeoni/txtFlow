@@ -3,10 +3,10 @@ const router = express.Router();
 const User = require('../models/user');
 
 function checkLogin(req, res, next) {
-  if (req.session.logado) {
-    res.status(200).json({ msg: 'Logado!' });
+  console.log('[DEBUG CHECK LOGIN REQ]: ', req.session);
 
-    // next();
+  if (req.session.logado) {
+    next();
   } else {
     res.redirect('/users/login');
   }
