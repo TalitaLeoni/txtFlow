@@ -52,9 +52,9 @@ app.use(
       ttl: sessionTimeInSeconds
     }),
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
+      secure: true,
       httpOnly: true,
-      sameSite: 'lax',
+      sameSite: 'none',
       maxAge: sessionTimeInMilliseconds
     }
   })
