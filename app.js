@@ -41,6 +41,8 @@ app.use(express.urlencoded({ extended: false }));
 const sessionTimeInSeconds = 14 * 24 * 60 * 60;
 const sessionTimeInMilliseconds = sessionTimeInSeconds * 1000;
 
+console.log('[DEBUG NODE ENV] ', process.env.NODE_ENV);
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -54,7 +56,7 @@ app.use(
     cookie: {
       secure: process.env.NODE_ENV === 'production',
       httpOnly: true,
-      sameSite: 'lax',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
       maxAge: sessionTimeInMilliseconds
     }
   })
@@ -65,6 +67,9 @@ app.use('/users', usersRouter);
 app.use('/home', homeRouter);
 app.use('/not-found', notFoundRouter);
 
-http.createServer(app).listen(4000);
+const PORT = 4000;
+http.createServer(app).listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
 
 module.exports = app;

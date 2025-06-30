@@ -83,6 +83,7 @@ router.post('/login', async (req, res) => {
         return res.render('error', { error: '500', title: 'Erro no Servidor', description: 'Não foi possível salvar a sessão.' });
       }
 
+      console.log('[SESSION AFTER LOGIN]', req.session);
       res.redirect('/home');
     });
   } catch (err) {
