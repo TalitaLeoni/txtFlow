@@ -43,8 +43,6 @@ app.use(express.urlencoded({ extended: false }));
 const sessionTimeInSeconds = 14 * 24 * 60 * 60;
 const sessionTimeInMilliseconds = sessionTimeInSeconds * 1000;
 
-console.log('[DEBUG NODE ENV] ', process.env.NODE_ENV);
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
