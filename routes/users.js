@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      res.render('error', { error: '400', title: 'Error', description: 'Credenciais inválidas' });
+      return res.render('error', { error: '400', title: 'Error', description: 'Credenciais inválidas' });
     }
 
     req.session.logado = true;

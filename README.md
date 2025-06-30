@@ -5,6 +5,7 @@
 - Criar um arquivo `.env` conforme o arquivo `.env.example`
 - Inicializar o projeto rodando `npm run dev`
 - O projeto estará em `localhost:4000`
+- O projeto em produção está em `https://txt-flow.vercel.app/`
 
 # Páginas
 

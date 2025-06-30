@@ -39,7 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const sessionTimeInSeconds = 14 * 24 * 60 * 60;
-const sessionTimeInMilliseconds = 14 * 24 * 60 * 60;
+const sessionTimeInMilliseconds = sessionTimeInSeconds * 1000;
 
 app.use(
   session({
@@ -65,6 +65,6 @@ app.use('/users', usersRouter);
 app.use('/home', homeRouter);
 app.use('/not-found', notFoundRouter);
 
-http.createServer(app).listen(4000);
+process.env.NODE_ENV === 'development' && http.createServer(app).listen(4000);
 
 module.exports = app;
