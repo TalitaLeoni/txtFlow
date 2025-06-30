@@ -55,7 +55,6 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
-  console.log(`[LOGIN ATTEMPT] Tentativa de login para o usuário: ${username}`);
 
   if (!username || !password) {
     return res.render('error', { error: '400', title: 'Error', description: 'Por favor, forneça e-mail e senha' });
@@ -63,22 +62,16 @@ router.post('/login', async (req, res) => {
 
   try {
     const user = await User.findOne({ username });
-    console.log('[LOGIN ATTEMPT] Usuário encontrado no banco:', user ? user.username : null);
 
     if (!user) {
-      console.log('[LOGIN FAILED] Usuário não encontrado.');
       return res.render('error', { error: '400', title: 'Error', description: 'Credenciais inválidas' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    nsole.log('[LOGIN ATTEMPT] A senha corresponde?', isMatch);
 
     if (!isMatch) {
-      onsole.log('[LOGIN FAILED] Senha incorreta.');
       return res.render('error', { error: '400', title: 'Error', description: 'Credenciais inválidas' });
     }
-
-    console.log('[LOGIN SUCCESS] Criando sessão e redirecionando...');
 
     req.session.logado = true;
     req.session.initial = user.initial;
@@ -93,7 +86,6 @@ router.post('/login', async (req, res) => {
       return res.redirect('/home');
     });
   } catch (err) {
-    console.error('[LOGIN ERROR] Erro no bloco try/catch:', err);
     return res.render('error', { error: '500', title: 'Erro no Servidor', description: err.message });
   }
 });
