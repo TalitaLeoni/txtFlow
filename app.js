@@ -1,13 +1,13 @@
 require('dotenv').config();
 
 const http = require('http');
-const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -38,14 +38,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+const sessionTimeInSeconds = 14 * 24 * 60 * 60;
+const sessionTimeInMilliseconds = 14 * 24 * 60 * 60;
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URL,
+      collectionName: 'sessions',
+      ttl: sessionTimeInSeconds
+    }),
     cookie: {
-      secure: false,
-      maxAge: 36000000
+      secure: process.env.NODE_ENV === 'production',
+      httpOnly: true,
+      sameSite: 'lax',
+      maxAge: sessionTimeInMilliseconds
     }
   })
 );

@@ -932,8 +932,4 @@ body:has(.home__container) {
   :root {
     font-size: 10px;
   }
-
-  .home__container .profile-picture {
-    display: none;
-  }
 }
